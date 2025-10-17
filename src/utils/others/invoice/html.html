@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Factura</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .invoice-container {
+      width: 1200px;
+      max-width: 100%;
+      background: #fff;
+      padding: 50px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .header img {
+      max-width: 150px;
+    }
+    .header h2 {
+      margin: 15px 0;
+      color: #222;
+      font-size: 2em;
+    }
+    .company-info {
+      font-size: 1.2em;
+      text-align: center;
+      color: #444;
+      margin-bottom: 40px;
+    }
+    .details {
+      margin-bottom: 40px;
+      font-size: 1.4em;
+      color: #333;
+    }
+    .details p {
+      margin: 20px 0;
+    }
+    .separator {
+      border-bottom: 2px solid #ccc;
+      margin: 40px 0;
+    }
+    .invoice-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 40px;
+      font-size: 1.4em;
+    }
+    .invoice-table th, .invoice-table td {
+      padding: 20px;
+      border-bottom: 1px solid #ccc;
+      text-align: left;
+    }
+    .invoice-table th {
+      background: #ececec;
+      font-weight: bold;
+      color: #222;
+    }
+    .total {
+      text-align: right;
+      font-size: 2em;
+      font-weight: bold;
+      margin-top: 30px;
+      color: #222;
+    }
+    .footer {
+      text-align: center;
+      font-size: 1.3em;
+      color: #555;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="invoice-container">
+    <div class="header">
+      <img src="https://nhdmbyxoyimcikenqcqu.supabase.co/storage/v1/object/sign/Assets/logo.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9kODU3ZjhiYS02ZjFlLTRmM2UtYmY3Zi04MWZjNTg0MGUwZGEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJBc3NldHMvbG9nby5qcGciLCJpYXQiOjE3NTc4Mzc3NTAsImV4cCI6MTc4OTM3Mzc1MH0.9Pnql4_Vj3Y6xBPNQ56c2JgAR_kHvdJ9L2LXyUJ1ic0" alt="Logo">
+      <h2>{{modo}}</h2>
+      <div class="company-info">
+        <p><strong>El Carretero EIRL</strong></p>
+        <p>Jr. Irene Silva Nro. 183, Urb. Horacio Zeballos, Cajamarca, Cajamarca</p>
+        <p>RUC: 206100466097</p>
+      </div>
+    </div>
+    <div class="details">
+      <p><strong>Cliente:</strong> {{nombre}}</p>
+      <p><strong>Orden:</strong> #{{ordenId}}</p>
+      <p><strong>Teléfono:</strong> {{telefono}}</p>
+      <p><strong>Dirección:</strong> {{direccion}}</p>
+      <p><strong>Canal:</strong> Delivery Telefónico</p>
+    </div>
+    <div class="separator"></div>
+    <p><strong>Fecha:</strong> {{fecha}}</p>
+    <table class="invoice-table">
+      <thead>
+        <tr>
+          <th>Artículo</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Importe</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{items}}
+      </tbody>
+    </table>
+    <p class="total">Total: ${{importe}}</p>
+    <div class="footer">
+      <p>Gracias por tu pedido. Si tienes alguna pregunta, contáctanos.</p>
+    </div>
+  </div>
+</body>
+</html>
